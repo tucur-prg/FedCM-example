@@ -25,6 +25,9 @@ async def wellKnown():
         "provider_urls": ["http://localhost:8080/config.json"],
     }
 
+#
+# IdP 設定ファイル
+#
 @app.get("/config.json")
 async def config():
     return {
@@ -41,6 +44,9 @@ async def config():
         }
     }
 
+#
+# アカウントリストエンドポイント
+#
 @app.get("/accounts")
 async def accounts():
     return {
@@ -61,6 +67,9 @@ async def accounts():
         }]
     }
 
+#
+# クライアントメタデータエンドポイント
+#
 @app.get("/client_metadata")
 async def clientMetadata():
     return {
@@ -68,6 +77,9 @@ async def clientMetadata():
         "terms_of_service_url": "http://localhost:8080/terms_of_service.html",
     }
 
+#
+# ID アサーションエンドポイント
+#
 @app.post("/assertion")
 async def assertion():
     return {
