@@ -15,5 +15,30 @@
 </head>
 
 <body>
+  <h2>FedCM</h2>
+  <button onclick="fedcm();">認証</button>
+  <hr>
+  <div>FedCM: <span id="fedcm"></span></div>
 </body>
+
+<script>
+function fedcm() {
+  navigator.credentials.get({
+    identity: {
+      providers: [{
+        configURL: "http://localhost:8080/config.json",
+        clientId: "dummy9999",
+        nonce: "456",
+      }],
+      mode: "permission"
+    }
+  })
+  .then(console.log)
+  .catch(console.log);
+}
+$(() => {
+  document.getElementById('fedcm').innerHTML = (window.FederatedCredential || FederatedCredential.prototype.login) ? 'Support' : 'Unsupport';
+});
+</script>
+
 </html>
